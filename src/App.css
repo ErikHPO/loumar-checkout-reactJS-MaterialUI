@@ -1,0 +1,30 @@
+:root{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  margin: 0;
+}
+
+.App{
+  margin: 0 auto;
+}
+
+.checkout{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+  height: 100%;
+  width: 100%;
+  /* background-color: red; */
+  
+}
+
+.acceptTerms  {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: .8rem;
+}
