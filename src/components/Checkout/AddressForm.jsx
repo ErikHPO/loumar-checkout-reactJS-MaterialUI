@@ -93,17 +93,17 @@ export default function AddressForm(){
                             maskChar: '',
                             onChange: async( res ) => {
                                 if(res.target.value.length === 9){
-                                    values.CEP = res.target.value.replace(/-/g, '');
-                                    await getAddressByCEP(values.CEP).then((address) => {
+                                    let CEP = res.target.value;
+                                    CEP = CEP.replace(/-/g, '');
+                                    await getAddressByCEP(CEP).then((address) => {
                                       console.log('VIA CEP API: ', address);
                                       setValues({
                                         ...values,
-                                        CEP: values.CEP,
+                                        CEP: res.target.value,
                                         city: address.localidade,
                                         street: address.logradouro,
-                                        // state: address.uf,
+                                        state: address.uf,
                                       });
-                                      setFieldValue('state', address.uf);
 
                                     }).catch((error) => {
                                         console.error(error);
