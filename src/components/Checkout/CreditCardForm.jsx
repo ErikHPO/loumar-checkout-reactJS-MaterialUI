@@ -16,9 +16,18 @@ import {
   Typography,
 } from '@mui/material';
 import InputMask from 'react-input-mask';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 
-function CreditCardForm() {
+function CreditCardForm({handleNext, handleBack , ...props}) {
+  console.log('CREDIT CARD FORM PROPS, ', props)
+  console.log('CREDIT CARD FORM HandleNext, ', handleNext)
+
+  const handleSubmit = (values) => {
+    console.log('handleSubmit values', values)
+    handleNext();
+  }
   return (
     <Container maxWidth="sm">
       <Formik
@@ -27,14 +36,11 @@ function CreditCardForm() {
           cardHolderName: '',
           expirationDate: '',
           cvv: '',
-          installment: '',
+          installment: '1',
           acceptTerms: false,
         }}
         validationSchema={creditCardSchema}
-        onSubmit={(values) => {
-            values.cardNumber = values.cardNumber.replace(/\s/g, '');
-          console.log(values);
-        }}
+        onSubmit={handleSubmit}
       >
         {({ errors, touched, values , handleBlur , handleChange}) => (
           <Form>
@@ -180,14 +186,24 @@ function CreditCardForm() {
             />
             </Box>
         </Grid>
-            </Grid>
+        <Grid item xs={6}>
+        <Button variant="contained" color="primary" onClick={handleBack} startIcon={<ArrowBackIosIcon/>}>
+          <Typography fontFamily={'Montserrat'} >
+          Voltar
+            </Typography>
+        </Button>
+        </Grid>
+        <Grid item xs={6}>
 
-            
-        <Button variant="contained" color="checkout" type="submit">
-          <Typography fontFamily={'Montserrat'}>
+        <Button variant="contained" color="checkout" type="submit" startIcon={<PaymentIcon/>} >
+          <Typography fontFamily={'Montserrat'} >
           Realizar Pagamento
             </Typography>
         </Button>
+        </Grid>
+            </Grid>
+
+            
       </Form>
     )}
   </Formik>

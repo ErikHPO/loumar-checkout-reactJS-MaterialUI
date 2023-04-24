@@ -5,16 +5,21 @@
 
 body{
   margin: 0;
+  max-width: 100vw;
 }
 
 .App{
   margin: 0 auto;
+  overflow: hidden;
+  padding: auto;
+
 }
 
-.checkout{
+ .checkout{
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
+  padding: 0;
   /* justify-content: center; */
   /* align-items: center; */
   /* align-content: center; */
@@ -27,4 +32,7 @@ body{
 .acceptTerms  {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: .8rem;
+}
+#checkout-container.checkout {
+ padding: 0;
 }
