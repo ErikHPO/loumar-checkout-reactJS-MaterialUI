@@ -21,9 +21,8 @@ import PaymentIcon from '@mui/icons-material/Payment';
 
 
 function CreditCardForm({handleNext, handleBack , ...props}) {
-  console.log('CREDIT CARD FORM PROPS, ', props)
-  console.log('CREDIT CARD FORM HandleNext, ', handleNext)
 
+  
   const handleSubmit = (values) => {
     console.log('handleSubmit values', values)
     handleNext();
@@ -72,6 +71,9 @@ function CreditCardForm({handleNext, handleBack , ...props}) {
                     {...field}
                     error={touched.cardNumber && !!errors.cardNumber}
                     helperText={touched.cardNumber && errors.cardNumber}
+                    onBlur={ (value) =>
+                      console.log('onBlur', value.target.value)
+                    }
                     InputProps={{
                         inputComponent: InputMask,
                         inputProps: {
@@ -195,7 +197,7 @@ function CreditCardForm({handleNext, handleBack , ...props}) {
         </Grid>
         <Grid item xs={6}>
 
-        <Button variant="contained" color="checkout" type="submit" startIcon={<PaymentIcon/>} >
+        <Button variant="contained" color="checkout" type="submit" startIcon={<PaymentIcon/>}>
           <Typography fontFamily={'Montserrat'} >
           Realizar Pagamento
             </Typography>
